@@ -132,8 +132,26 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
     <script>
-        // Aqui você pode adicionar JavaScript para validação no lado do cliente
-        // antes de enviar os formulários.
+// Seu código Firebase aqui
+const firebaseConfig = {
+  apiKey: "<!-- COPIE SUA API KEY DO CONSOLE AQUI -->", // <-- Pegue isso no Console!
+  authDomain: "wzzm-4645a.firebaseapp.com",
+  databaseURL: "https://wzzm-4645a-default-rtdb.firebaseio.com",
+  projectId: "wzzm-4645a",
+  storageBucket: "wzzm-4645a.appspot.com",
+  messagingSenderId: "1040192406942",
+  appId: "<!-- COPIE SEU APP ID DO CONSOLE AQUI -->", // <-- Pegue isso no Console!
+  measurementId: "<!-- COPIE SEU MEASUREMENT ID DO CONSOLE AQUI (se usar Analytics) -->" // <-- Pegue isso no Console!
+};
+
+
+  // Inicializar o Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  const auth = firebase.auth();
+  const db = firebase.database();
+
+  // Funções para cadastro e login virão aqui
     </script>
 </body>
 </html>
