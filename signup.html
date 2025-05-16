@@ -74,26 +74,41 @@
         <div class="container">
             <div class="form-wrapper">
                 <h2>Cadastro</h2>
-                <form id="signupForm" action="/login" method="POST"> <div class="form-group">
-                        <label for="signup-username">Nome de Usuário:</label>
-                        <input type="text" id="signup-username" name="username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="signup-email">Email:</label>
-                        <input type="email" id="signup-email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="signup-password">Senha:</label>
-                        <input type="password" id="signup-password" name="password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="confirm-password">Confirmar Senha:</label>
-                        <input type="password" id="confirm-password" name="confirm_password" required>
-                    </div>
-                    <button type="submit">Cadastrar</button>
-                    <div id="signup-error" class="error-message"></div>
-                </form>
-            </div>
+    <form id="signupForm" method="POST"> <div class="form-group">
+            <label for="signup-username">Nome de Usuário:</label>
+            <input type="text" id="signup-username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="signup-email">Email:</label>
+            <input type="email" id="signup-email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="signup-password">Senha:</label>
+            <input type="password" id="signup-password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm-password">Confirmar Senha:</label>
+            <input type="password" id="confirm-password" name="confirm_password" required>
+        </div>
+        <button type="submit">Cadastrar</button>
+        <div id="signup-error" class="error-message"></div>
+    </form>
+</div>
+
+<div class="form-wrapper">
+    <h2>Login</h2>
+    <form id="loginForm" method="POST"> <div class="form-group">
+            <label for="login-username">Nome de Usuário ou Email:</label>
+            <input type="text" id="login-username" name="username_or_email" required>
+        </div>
+        <div class="form-group">
+            <label for="login-password">Senha:</label>
+            <input type="password" id="login-password" name="password" required>
+        </div>
+        <button type="submit">Entrar</button>
+        <div id="login-error" class="error-message"></div>
+    </form>
+</div>
 
             <div class="form-wrapper">
                 <h2>Login</h2>
