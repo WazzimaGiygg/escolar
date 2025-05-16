@@ -6,13 +6,14 @@
     apiKey: "AIzaSyB5lqOE-ajoX6w-_ZEu83li0w0GgGamMuQ",
     authDomain: "wzzm-4645a.firebaseapp.com",
     projectId: "wzzm-4645a",
-    storageBucket: "wzzm-4645a.appspot.com", // corrigido aqui!
+    storageBucket: "wzzm-4645a.appspot.com",
     messagingSenderId: "1040192406942",
     appId: "1:1040192406942:web:c518f996455c7078a7828f",
     measurementId: "G-6FLELSDZQJ"
   };
   firebase.initializeApp(firebaseConfig);
 
+  // Cadastro
   document.getElementById('signupForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const username = document.getElementById('signup-username').value;
@@ -42,6 +43,7 @@
       });
   });
 
+  // Login
   document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const usernameOrEmail = document.getElementById('login-username').value;
@@ -56,6 +58,7 @@
       });
   });
 
+  // Mensagens amigáveis de erro
   function getErrorMessage(errorCode) {
     switch (errorCode) {
       case 'auth/email-already-in-use': return 'Este e-mail já está em uso.';
