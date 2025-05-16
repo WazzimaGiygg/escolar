@@ -133,25 +133,91 @@
     <script src="assets/js/main.js"></script>
     <script>
 // Seu código Firebase aqui
-const firebaseConfig = {
-  apiKey: "<!-- COPIE SUA API KEY DO CONSOLE AQUI -->", // <-- Pegue isso no Console!
-  authDomain: "wzzm-4645a.firebaseapp.com",
-  databaseURL: "https://wzzm-4645a-default-rtdb.firebaseio.com",
-  projectId: "wzzm-4645a",
-  storageBucket: "wzzm-4645a.appspot.com",
-  messagingSenderId: "1040192406942",
-  appId: "<!-- COPIE SEU APP ID DO CONSOLE AQUI -->", // <-- Pegue isso no Console!
-  measurementId: "<!-- COPIE SEU MEASUREMENT ID DO CONSOLE AQUI (se usar Analytics) -->" // <-- Pegue isso no Console!
-};
+import { initializeApp } from "firebase/app";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+  import { getDatabase, ref, set, get } from "firebase/database";
 
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyB5lqOE-ajoX6w-_ZEu83li0w0GgGamMuQ",
+    authDomain: "wzzm-4645a.firebaseapp.com",
+    projectId: "wzzm-4645a",
+    storageBucket: "wzzm-4645a.firebasestorage.app",
+    messagingSenderId: "1040192406942",
+    appId: "1:1040192406942:web:c518f996455c7078a7828f",
+    measurementId: "G-6FLELSDZQJ"
+  };
 
-  // Inicializar o Firebase
-  firebase.initializeApp(firebaseConfig);
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getDatabase(app);
 
-  const auth = firebase.auth();
-  const db = firebase.database();
+  // Função para lidar com o cadastro
+  document.getElementById('signupForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = document.getElementById('signup-username').value;
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+    const signupError = document.getElementById('signup-error');
 
-  // Funções para cadastro e login virão aqui
+    if (password !== confirmPassword) {
+      signupError.textContent = 'As senhas não coincidem.';
+      return;
+    }
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        return set(ref(db, 'users/' + user.uid), {
+          username: username,
+          email: email
+        });
+      })
+      .then(() => {
+        console.log('Usuário cadastrado com sucesso!');
+        window.location.href = 'index.html'; // Redirecionar para a página principal após o cadastro
+      })
+      .catch((error) => {
+        signupError.textContent = getErrorMessage(error.code);
+      });
+  });
+
+  // Função para lidar com o login
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const usernameOrEmail = document.getElementById('login-username').value;
+    const password = document.getElementById('login-password').value;
+    const loginError = document.getElementById('login-error');
+
+    signInWithEmailAndPassword(auth, usernameOrEmail, password)
+      .then((userCredential) => {
+        console.log('Login realizado com sucesso!');
+        window.location.href = 'index.html'; // Redirecionar para a página principal após o login
+      })
+      .catch((error) => {
+        loginError.textContent = getErrorMessage(error.code);
+      });
+  });
+
+  // Função para traduzir códigos de erro do Firebase em mensagens amigáveis
+  function getErrorMessage(errorCode) {
+    switch (errorCode) {
+      case 'auth/email-already-in-use':
+        return 'Este e-mail já está em uso.';
+      case 'auth/invalid-email':
+        return 'O e-mail é inválido.';
+      case 'auth/user-not-found':
+        return 'Usuário não encontrado.';
+      case 'auth/wrong-password':
+        return 'Senha incorreta.';
+      case 'auth/weak-password':
+        return 'A senha é muito fraca.';
+      default:
+        return 'Ocorreu um erro inesperado. Tente novamente.';
+    }
+  }
     </script>
 </body>
 </html>
