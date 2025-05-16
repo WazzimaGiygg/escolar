@@ -141,7 +141,6 @@
     <script src="assets/js/main.js"></script>
     <script>
       // Configuração do Firebase
-      // Sua configuração para o projeto wzzm-4645a parece correta!
       const firebaseConfig = {
         apiKey: "AIzaSyB5lqOE-ajoX6w-_ZEu83li0w0GgGamMuQ",
         authDomain: "wzzm-4645a.firebaseapp.com",
@@ -151,75 +150,102 @@
         appId: "1:1040192406942:web:c518f996455c7078a7828f",
         measurementId: "G-6FLELSDZQJ"
       };
-      firebase.initializeApp(firebaseConfig);
+      console.log("Inicializando Firebase...");
+      try {
+         firebase.initializeApp(firebaseConfig);
+         console.log("Firebase inicializado com sucesso!");
+      } catch (e) {
+         console.error("Erro ao inicializar Firebase:", e);
+      }
+
 
       // Cadastro
       document.getElementById('signupForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Garante que a submissão padrão do formulário seja prevenida
+        event.preventDefault();
+        console.log("Formulário de Cadastro submetido.");
         const username = document.getElementById('signup-username').value;
         const email = document.getElementById('signup-email').value;
         const password = document.getElementById('signup-password').value;
         const confirmPassword = document.getElementById('confirm-password').value;
         const signupError = document.getElementById('signup-error');
 
-        signupError.textContent = ''; // Limpa mensagens de erro anteriores
+        signupError.textContent = '';
 
         if (password !== confirmPassword) {
           signupError.textContent = 'As senhas não coincidem.';
+          console.log("Senhas não coincidem. Cadastro interrompido.");
           return;
         }
 
-        // Chamada para o Firebase Authentication para criar o usuário
+        console.log("Chamando createUserWithEmailAndPassword para:", email);
+
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then((userCredential) => {
+            console.log("createUserWithEmailAndPassword bem-sucedido. UID:", userCredential.user.uid);
             const user = userCredential.user;
             // Salvando informações adicionais no Realtime Database
+            console.log("Salvando dados do usuário no Realtime Database...");
+            // O retorno aqui é crucial para encadear a Promise do SET
             return firebase.database().ref('users/' + user.uid).set({
               username: username,
-              email: email // Salvando email também, se necessário
+              email: email
             });
           })
           .then(() => {
-            // Redireciona após cadastro e salvamento no DB (ajuste o redirecionamento conforme sua necessidade)
-            // É importante que o redirecionamento ocorra DENTRO do .then()
+            // Este THEN só executa se o SET no Realtime Database for bem-sucedido
+            console.log("Dados do usuário salvos no Realtime Database com sucesso!");
+            console.log("Redirecionando para index.html...");
             window.location.href = 'index.html';
           })
           .catch((error) => {
-            // Lida com erros do Firebase Authentication ou Realtime Database
+            // Este CATCH lida com erros tanto do createUserWithEmailAndPassword quanto do SET no Realtime Database
+            console.error("Erro capturado no .catch do signup:", error);
             signupError.textContent = getErrorMessage(error.code);
-            console.error("Erro no cadastro:", error); // Loga o erro completo no console para debug
           });
       });
 
       // Login
       document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Garante que a submissão padrão do formulário seja prevenida
+        event.preventDefault();
+        console.log("Formulário de Login submetido.");
         const email = document.getElementById('login-username').value; // Note: O input está marcado como 'username', mas é usado como email
         const password = document.getElementById('login-password').value;
         const loginError = document.getElementById('login-error');
 
-        loginError.textContent = ''; // Limpa mensagens de erro anteriores
+        loginError.textContent = '';
 
-        // Chamada para o Firebase Authentication para fazer login
+        console.log("Chamando signInWithEmailAndPassword para:", email);
+
         firebase.auth().signInWithEmailAndPassword(email, password)
           .then(() => {
-            // Redireciona após o login bem-sucedido
-             // É importante que o redirecionamento ocorra DENTRO do .then()
+            console.log("signInWithEmailAndPassword bem-sucedido.");
+            console.log("Redirecionando para index.html...");
             window.location.href = 'index.html';
           })
           .catch((error) => {
-             // Lida com erros do Firebase Authentication
+            console.error("Erro capturado no .catch do login:", error);
             loginError.textContent = getErrorMessage(error.code);
-            console.error("Erro no login:", error); // Loga o erro completo no console para debug
           });
       });
 
       // Mensagens amigáveis de erro
       function getErrorMessage(errorCode) {
         // Mapeamento de códigos de erro do Firebase Auth para mensagens amigáveis
-        // Usei alguns exemplos dos fatos que você forneceu e do Firebase Auth Reference
+        console.log("Código de erro recebido:", errorCode); // Log para ver qual código está chegando
         switch (errorCode) {
           case 'auth/email-already-in-use': return 'Este e-mail já está em uso.';
           case 'auth/invalid-email': return 'O e-mail é inválido.';
           case 'auth/user-disabled': return 'Esta conta de usuário foi desativada.';
-          
+          case 'auth/user-not-found': return 'Usuário não encontrado.';
+          case 'auth/wrong-password': return 'Senha incorreta.';
+          case 'auth/weak-password': return 'A senha é muito fraca. Precisa ter pelo menos 6 caracteres.';
+          case 'auth/operation-not-allowed': return 'O método de login por e-mail/senha não está habilitado. Verifique as configurações no Firebase Console.';
+          case 'auth/network-request-failed': return 'Falha na rede. Verifique sua conexão com a internet.';
+          // O código de erro abaixo está nos fatos que você me deu sobre AuthErrorCode
+          case 'auth/unauthorized-continue-url': return 'O domínio da URL de continuação não está na lista branca. Adicione o domínio no Firebase Console.';
+          default: return `Ocorreu um erro inesperado (${errorCode}). Tente novamente.`; // Inclui o código para debug
+        }
+      }
+    </script>
+</body>
+</html>
