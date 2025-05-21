@@ -1,43 +1,60 @@
-<!-- ####### HEY, I AM THE SOURCE EDITOR! #########-->
-<h1 style="color: #5e9ca0;">Bem vindo ao WZZM Escolar</h1>
-<h2 style="color: #2e6c80;">Como posso come&ccedil;ar?</h2>
-<p>Aqui voc&ecirc; pode selecionar as mat&eacute;rias nos quais voc&ecirc; precisa.</p>
-<p><a href="./ensinofundamental.html">Ensino Fundamental</a>:</p>
-<table style="border-collapse: collapse; width: 100%;" border="1">
-<tbody>
-<tr>
-<td style="width: 12.5%; text-align: center;"><a href="./ensinofudamental/linguaportuguesa.html">Lingua Portugu&ecirc;sa</a></td>
-<td style="width: 12.5%; text-align: center;"><a href="./ensinofudamental/matematica.html">Matem&aacute;tica</a></td>
-<td style="width: 12.5%; text-align: center;"><a href="./ensinofudamental/ciencias.html">Ci&ecirc;ncias</a></td>
-<td style="width: 12.5%; text-align: center;"><a href="./ensinofudamental/historia.html">Hist&oacute;ria</a></td>
-<td style="width: 12.5%; text-align: center;"><a href="./ensinofudamental/geografia.html">Geografia</a></td>
-<td style="width: 12.5%; text-align: center;"><a href="./ensinofudamental/artes.html">Artes</a></td>
-<td style="width: 12.5%; text-align: center;"><a href="./ensinofudamental/educacaofisica.html">Educa&ccedil;&atilde;o F&iacute;sica</a></td>
-</tr>
-</tbody>
-</table>
-<p><a href="./ensinomedio.html">Ensino M&eacute;dio</a>:</p>
-<table style="border-collapse: collapse; height: 54px; width: 707px;" border="1">
-<tbody>
-<tr style="height: 36px;">
-<td style="width: 98.9844px; text-align: center; height: 36px;"><a href="./ensinomedio/linguaportuguesa.html">Lingua Portugu&ecirc;sa</a></td>
-<td style="width: 99.2031px; text-align: center; height: 36px;"><a href="./ensinomedio/matematica.html">Matem&aacute;tica</a></td>
-<td style="width: 97.0938px; text-align: center; height: 36px;"><a href="./ensinomedio/ciencias.html">Ci&ecirc;ncias</a></td>
-<td style="width: 97.0312px; text-align: center; height: 36px;"><a href="./ensinomedio/historia.html">Hist&oacute;ria</a></td>
-<td style="width: 98px; text-align: center; height: 36px;"><a href="./ensinomedio/geografia.html">Geografia</a></td>
-<td style="width: 96.7656px; text-align: center; height: 36px;"><a href="./ensinomedio/artes.html">Artes</a></td>
-<td style="width: 97.9219px; text-align: center; height: 36px;"><a href="./ensinomedio/educacaofisica.html">Educa&ccedil;&atilde;o F&iacute;sica</a></td>
-</tr>
-<tr style="height: 18px;">
-<td style="width: 98.9844px; text-align: center; height: 18px;"><a href="./ensinomedio/linguainglesa.html">Lingua Ingl&ecirc;sa</a></td>
-<td style="width: 99.2031px; text-align: center; height: 18px;"><a href="./ensinomedio/sociologia.html">Sociologia</a></td>
-<td style="width: 97.0938px; text-align: center; height: 18px;"><a href="./ensinomedio/fisica.html">F&iacute;sica</a></td>
-<td style="width: 97.0312px; text-align: center; height: 18px;"><a href="./ensinomedio/quimica.html">Quimica</a></td>
-<td style="width: 98px; text-align: center; height: 18px;"><a href="./ensinomedio/biologia.html">Biologia</a></td>
-<td style="width: 96.7656px; text-align: center; height: 18px;"><a href="./ensinomedio/historia.html">Hist&oacute;ria</a></td>
-<td style="width: 97.9219px; text-align: center; height: 18px;"><a href="./ensinomedio/filosofia.html">Filosofia</a></td>
-</tr>
-</tbody>
-</table>
-<p>Feito com aux&iacute;lio do site: <a href="https://html-online.com/">https://html-online.com/</a></p>
-<p>Editor: Collei "Grigori" Ludwig</p>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>WZZM Escolar</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Bem-vindo ao WZZM Escolar</h1>
+    <h2>Como posso começar?</h2>
+    <p>Selecione as matérias que você deseja visualizar. O conteúdo será exibido abaixo.</p>
+
+    <div class="section">
+      <h3>Ensino Fundamental</h3>
+      <div class="grid">
+        <button onclick="loadContent('ensinofundamental/linguaportuguesa.html')">Língua Portuguesa</button>
+        <button onclick="loadContent('ensinofundamental/matematica.html')">Matemática</button>
+        <button onclick="loadContent('ensinofundamental/ciencias.html')">Ciências</button>
+        <button onclick="loadContent('ensinofundamental/historia.html')">História</button>
+        <button onclick="loadContent('ensinofundamental/geografia.html')">Geografia</button>
+        <button onclick="loadContent('ensinofundamental/artes.html')">Artes</button>
+        <button onclick="loadContent('ensinofundamental/educacaofisica.html')">Educação Física</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Ensino Médio</h3>
+      <div class="grid">
+        <button onclick="loadContent('ensinomedio/linguaportuguesa.html')">Língua Portuguesa</button>
+        <button onclick="loadContent('ensinomedio/matematica.html')">Matemática</button>
+        <button onclick="loadContent('ensinomedio/ciencias.html')">Ciências</button>
+        <button onclick="loadContent('ensinomedio/historia.html')">História</button>
+        <button onclick="loadContent('ensinomedio/geografia.html')">Geografia</button>
+        <button onclick="loadContent('ensinomedio/artes.html')">Artes</button>
+        <button onclick="loadContent('ensinomedio/educacaofisica.html')">Educação Física</button>
+        <button onclick="loadContent('ensinomedio/linguainglesa.html')">Língua Inglesa</button>
+        <button onclick="loadContent('ensinomedio/sociologia.html')">Sociologia</button>
+        <button onclick="loadContent('ensinomedio/fisica.html')">Física</button>
+        <button onclick="loadContent('ensinomedio/quimica.html')">Química</button>
+        <button onclick="loadContent('ensinomedio/biologia.html')">Biologia</button>
+        <button onclick="loadContent('ensinomedio/filosofia.html')">Filosofia</button>
+      </div>
+    </div>
+
+    <iframe id="iframeContent" src="" frameborder="0"></iframe>
+
+    <footer>
+      <p>Feito com auxílio do site: <a href="https://html-online.com/">html-online.com</a></p>
+      <p>Editor: Collei "Grigori" Ludwig</p>
+    </footer>
+  </div>
+
+  <script>
+    function loadContent(url) {
+      document.getElementById('iframeContent').src = url;
+    }
+  </script>
+</body>
+</html>
