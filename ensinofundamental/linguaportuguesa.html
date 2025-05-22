@@ -2,33 +2,76 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Português - Ensino Fundamental</title>
-  <link rel="stylesheet" href="../css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecione o Ano</title>
+
+    <!-- CSS embutido -->
+    <style>
+        /* Estilo para o corpo */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Estilo para o título */
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        /* Estilo para a tabela */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        /* Estilo para as células da tabela */
+        td, th {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        /* Estilo para os links */
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        /* Estilo para os links ao passar o mouse */
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilo para o cabeçalho da tabela */
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Selecione o ano desejado da matéria (UPDATe 21/05/2025) :</h1>
 
-    <div class="grid">
-      <button onclick="loadContent('./p1f/p1f.pdf')">1º Ano</button>
-      <button onclick="loadContent('portugues/segundoano.html')">2º Ano</button>
-      <button onclick="loadContent('portugues/terceiroano.html')">3º Ano</button>
-      <button onclick="loadContent('portugues/quartoano.html')">4º Ano</button>
-      <button onclick="loadContent('portugues/quintoano.html')">5º Ano</button>
-      <button onclick="loadContent('portugues/sextoano.html')">6º Ano</button>
-      <button onclick="loadContent('portugues/setimoano.html')">7º Ano</button>
-      <button onclick="loadContent('portugues/oitavoano.html')">8º Ano</button>
-      <button onclick="loadContent('portugues/nonoano.html')">9º Ano</button>
-    </div>
+<h1>Selecione o ano desejado da matéria:</h1>
 
-    <iframe id="iframeContent" src="" frameborder="0"></iframe>
-  </div>
+<table>
+    <tbody>
+        <tr>
+            <td><a href="./p1f/p1f.pdf">Primeiro</a></td>
+            <td><a href="./p1f/segundoano.pdf">Segundo</a></td>
+            <td><a href="./p1f/terceiroano.pdf">Terceiro</a></td>
+            <td><a href="./p1f/quartoano.pdf">Quarto</a></td>
+            <td><a href="./p1f/quintoano.pdf">Quinto</a></td>
+            <td><a href="./p1f/sextoano.pdf">Sexto</a></td>
+            <td><a href="./p1f/setimoano.pdf">Sétimo</a></td>
+            <td><a href="./p1f/oitavoano.pdf">Oitavo</a></td>
+            <td><a href="./p1f/nonoano.pdf">Nono</a></td>
+        </tr>
+    </tbody>
+</table>
 
-  <script>
-    function loadContent(url) {
-      document.getElementById('iframeContent').src = url;
-    }
-  </script>
 </body>
 </html>
