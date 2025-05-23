@@ -1,70 +1,94 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erro 404 - Página Não Encontrada</title>
-    <link rel="stylesheet" href="./styles.css">
+  <meta charset="UTF-8" />
+  <title>ERRO 404! </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
 </head>
-<body>
+<body class="bg-gray-100 min-h-screen py-8">
+  <div class="max-w-6xl mx-auto px-4">
+    <h1 class="text-2xl font-semibold text-center text-gray-800 mb-8">Leia o conteúdo com atenção!</h1>
 
-    <h1><span class="highlight">Atenção:</span> A página solicitada não existe.</h1>
+    <div id="content-sections">
+      <p>Carregando conteúdo...</p>
+    </div>
 
-    <p>O erro <strong>404 Not Found</strong> (Página Não Encontrada) é, sem dúvida, um dos códigos de status HTTP mais comuns e reconhecíveis que os usuários da internet encontram. Ele faz parte da classe de erros <strong>4xx (Erros do Cliente)</strong>, o que significa que o problema é percebido como sendo do lado do navegador ou da solicitação feita pelo usuário, e não do servidor em si.</p>
+  </div>
 
-    <h3>O que significa?</h3>
-    <p>Quando você tenta acessar uma página da web, seu navegador envia uma solicitação a um servidor. O erro 404 ocorre quando:</p>
+  <script>
+    const JSON_URL = 'wzzm.org/json/erro404.json'; // OU 'https://admin.wzzm.org/json/artigos.json'
 
-    <ol>
-        <li><strong>O navegador consegue se conectar ao servidor.</strong> Isso é importante: o servidor está funcionando e acessível.</li>
-        <li><strong>O servidor, no entanto, não consegue encontrar o recurso (página, imagem, arquivo) solicitado pelo navegador.</strong></li>
-    </ol>
+    async function loadContent() {
+      const contentSectionsDiv = document.getElementById('content-sections');
+      contentSectionsDiv.innerHTML = '<p>Carregando conteúdo...</p>';
 
-    <p>Em outras palavras, o servidor está "online" e respondendo, mas ele não tem o que você está procurando no endereço fornecido.</p>
+      // Se não há controle de acesso, userRole e filtragem são simplificados ou removidos.
+      const userRole = 'publico'; // Assumimos que tudo é público ou não há usuários logados
 
-    <h3>Causas Comuns do Erro 404</h3>
-    <ul>
-        <li><strong>URL incorreta (erro de digitação):</strong> Esta é a causa mais frequente. O usuário digitou o endereço da web (URL) errado na barra de endereços do navegador.</li>
-        <li><strong>Página movida ou deletada:</strong> O conteúdo da página foi removido do servidor ou teve seu endereço (URL) alterado, e não há um redirecionamento configurado para o novo local.</li>
-        <li><strong>Link quebrado ou "morto":</strong> Um link em outro site, ou até mesmo dentro do próprio site, aponta para uma página que não existe mais ou cuja URL mudou.</li>
-        <li><strong>Problemas de DNS:</strong> Configurações incorretas do DNS podem levar o navegador a procurar a página no lugar errado, resultando em um 404.</li>
-        <li><strong>Erro de cache do navegador:</strong> O navegador pode ter armazenado uma versão antiga da página no cache que agora não existe mais.</li>
-        <li><strong>Problemas com o arquivo .htaccess:</strong> Em servidores Apache, um arquivo <code>.htaccess</code> mal configurado pode causar redirecionamentos incorretos ou impedir o acesso a certos arquivos, resultando em 404s.</li>
-        <li><strong>Arquivo ausente:</strong> Pode ser que um arquivo essencial para a página (como uma imagem, um arquivo CSS ou JavaScript) não esteja mais disponível no servidor, gerando um 404 para aquele recurso específico, mesmo que a página principal carregue parcialmente.</li>
-        <li><strong>Vírus ou malware:</strong> Softwares maliciosos podem interferir na navegação, causando redirecionamentos para páginas inexistentes ou impedindo o acesso correto.</li>
-    </ul>
+      try {
+        const response = await fetch(JSON_URL);
+        if (!response.ok) {
+          throw new Error(`Erro HTTP! status: ${response.status} - Verifique a URL e as permissões de CORS.`);
+        }
+        const data = await response.json();
 
-    <h3>O que acontece quando um 404 ocorre?</h3>
-    <p>Geralmente, o navegador exibe uma mensagem de erro indicando que a página não foi encontrada. Muitos sites personalizam suas páginas de erro 404 para torná-las mais amigáveis, com um design que combina com o restante do site e, muitas vezes, oferecendo opções como um campo de busca, links para a página inicial ou outras seções populares, ou até mesmo um toque de humor para tentar diminuir a frustração do usuário.</p>
+        const materias = Object.values(data.materias);
 
-    <h3>Impacto e Soluções</h3>
-    <p><strong>Para usuários:</strong></p>
-    <ul>
-        <li><strong>Verifique a URL:</strong> A primeira coisa a fazer é revisar se você digitou o endereço corretamente.</li>
-        <li><strong>Atualize a página:</strong> Às vezes, é um erro temporário de carregamento.</li>
-        <li><strong>Limpe o cache e os cookies do navegador:</strong> Isso pode resolver problemas de páginas em cache.</li>
-        <li><strong>Tente novamente mais tarde:</strong> O site pode estar passando por manutenção ou instabilidade temporária.</li>
-        <li><strong>Use um mecanismo de busca:</strong> Tente pesquisar o conteúdo desejado no Google ou em outro motor de busca.</li>
-    </ul>
+        // Se todo o conteúdo é público, esta filtragem é redundante, mas não faz mal.
+        // Se você tiver certeza que NUNCA terá 'acesso: "admin"' no JSON, pode remover o .filter()
+        const filteredMaterias = materias.filter(materia => {
+            return !(materia.acesso === 'admin' && userRole !== 'admin');
+        });
 
-    <p><strong>Para proprietários de sites:</strong></p>
-    <ul>
-        <li><strong>Redirecionamentos 301:</strong> Se uma página foi movida permanentemente, implemente um redirecionamento 301 (Moved Permanently) do URL antigo para o novo. Isso é crucial para a experiência do usuário e para o SEO.</li>
-        <li><strong>Verifique links quebrados:</strong> Utilize ferramentas para identificar e corrigir links internos e externos que apontam para páginas inexistentes.</li>
-        <li><strong>Páginas 404 personalizadas:</strong> Crie uma página 404 amigável e útil para guiar os usuários de volta ao seu site.</li>
-        <li><strong>Monitore erros 404:</strong> Use ferramentas de análise de web (como Google Search Console) para identificar quais URLs estão gerando erros 404 no seu site, o que pode indicar problemas a serem corrigidos.</li>
-    </ul>
+        const categorias = {};
+        filteredMaterias.forEach(materia => {
+          if (!categorias[materia.categoria]) {
+            categorias[materia.categoria] = [];
+          }
+          categorias[materia.categoria].push(materia);
+        });
 
-    <p>Esses códigos são agrupados em classes:</p>
-    <ul>
-        <li><strong>1xx (Informativas):</strong> Indicam que a solicitação foi recebida e o processo continua.</li>
-        <li><strong>2xx (Sucesso):</strong> A ação foi recebida, compreendida e aceita com sucesso.</li>
-        <li><strong>3xx (Redirecionamento):</strong> O cliente precisa tomar alguma ação adicional para completar a solicitação.</li>
-        <li><strong>4xx (Erros do Cliente):</strong> Indicam que a solicitação contém sintaxe incorreta ou não pode ser atendida, sendo o erro do lado do cliente.</li>
-        <li><strong>5xx (Erros do Servidor):</strong> Indicam que o servidor falhou ao cumprir uma solicitação aparentemente válida.</li>
-    </ul>
+        contentSectionsDiv.innerHTML = '';
 
-    <p>Entre em contato com a WZZM para solicitar informações sobre este erro. O e-mail de contato é <a href="mailto:nukephoenixdeveloper@gmail.com">nukephoenixdeveloper@gmail.com</a></p>
+        for (const categoria in categorias) {
+          const section = document.createElement('section');
+          section.className = 'mb-10';
+          section.innerHTML = `
+            <h2 class="text-xl font-semibold text-gray-700 mb-4 border-b pb-2">${categoria}</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="${categoria.replace(/\s+/g, '-').toLowerCase()}-container">
+            </div>
+          `;
+          contentSectionsDiv.appendChild(section);
 
+          const container = section.querySelector(`#${categoria.replace(/\s+/g, '-').toLowerCase()}-container`);
+
+          categorias[categoria].forEach(materia => {
+            const div = document.createElement('div');
+            div.className = 'bg-white rounded-lg shadow p-4';
+            div.innerHTML = `
+              <h3 class="font-semibold text-gray-800">${materia.titulo}</h3>
+              <p class="text-sm text-gray-600 mt-1">${materia.descricao}</p>
+              <a href="${materia.link}" class="text-blue-600 text-sm font-semibold hover:underline mt-2 inline-block">Ver mais</a>
+            `;
+            container.appendChild(div);
+          });
+        }
+
+      } catch (error) {
+        console.error("Erro ao carregar conteúdo:", error);
+        contentSectionsDiv.innerHTML = `<p class="text-red-500">Erro ao carregar o conteúdo: ${error.message}.</p>`;
+      }
+    }
+
+    // Chama a função para carregar o conteúdo uma vez quando a página carregar.
+    window.addEventListener('load', loadContent);
+  </script>
 </body>
 </html>
