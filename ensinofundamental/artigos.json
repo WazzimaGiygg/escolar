@@ -9,17 +9,17 @@
         {
           "etapa": "1. Escolha do tema",
           "descricao": "Selecionar um tema relevante e viável para pesquisa.",
-          "link": "OQR3/metodologiageral.html#escolha-do-tema"
+          "link": "OQR3/metodologiageral.html"
         },
         {
           "etapa": "2. Levantamento bibliográfico",
           "descricao": "Pesquisar artigos, livros e outras fontes para embasar o trabalho.",
-          "link": "OQR3/leituraeproducaodetextosacdemicos.html#levantamento-bibliografico"
+          "link": "OQR3/leituraeproducaodetextosacdemicos.html"
         },
         {
           "etapa": "3. Definição do problema e objetivos",
           "descricao": "Delimitar a questão de pesquisa e o que se deseja alcançar.",
-          "link": "OQR3/introducao_a_pesquisa_cientifica.html#definicao-do-problema"
+          "link": "OQR3/introducao_a_pesquisa_cientifica.htmla"
         },
         {
           "etapa": "4. Metodologia",
@@ -53,12 +53,12 @@
         {
           "etapa": "1. Escolha e delimitação do tema",
           "descricao": "Definir claramente o foco do artigo.",
-          "link": "OQR3/metodologiageral.html#escolha-do-tema"
+          "link": "OQR3/metodologiageral.html"
         },
         {
           "etapa": "2. Revisão sistemática da literatura",
           "descricao": "Analisar criticamente trabalhos anteriores relacionados.",
-          "link": "OQR3/leituraeproducaodetextosacdemicos.html#revisao-da-literatura"
+          "link": "OQR3/leituraeproducaodetextosacdemicos.html"
         },
         {
           "etapa": "3. Elaboração do projeto e metodologia",
@@ -97,7 +97,7 @@
         {
           "etapa": "1. Escolha do tema e definição do problema",
           "descricao": "Selecionar um tema alinhado com a área e viável para pesquisa.",
-          "link": "OQR3/tcc.html#escolha-do-tema"
+          "link": "OQR3/tcc.html"
         },
         {
           "etapa": "2. Elaboração do projeto de pesquisa",
@@ -107,7 +107,7 @@
         {
           "etapa": "3. Revisão bibliográfica",
           "descricao": "Consultar fontes relevantes para fundamentar o estudo.",
-          "link": "OQR3/leituraeproducaodetextosacdemicos.html#revisao-bibliografica"
+          "link": "OQR3/leituraeproducaodetextosacdemicos.html"
         },
         {
           "etapa": "4. Coleta de dados e análise",
@@ -122,12 +122,12 @@
         {
           "etapa": "6. Revisão e ajustes",
           "descricao": "Revisar texto, formatar e realizar ajustes conforme feedback do orientador.",
-          "link": "OQR3/tcc.html#revisao-e-ajustes"
+          "link": "OQR3/tcc.html"
         },
         {
           "etapa": "7. Preparação para defesa",
           "descricao": "Organizar apresentação oral e documentos para defesa final.",
-          "link": "OQR3/comunicacao_cientifica.html#defesa"
+          "link": "OQR3/comunicacao_cientifica.html"
         }
       ]
     }
