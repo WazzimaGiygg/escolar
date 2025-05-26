@@ -1,200 +1,135 @@
 {
   "materias": {
-    "metodologiaCientifica": {
-      "titulo": "Metodologia Científica",
-      "descricao": "Princípios e métodos da pesquisa científica.",
-      "link": "./paginas/metodologiacientifica.html",
+    "construcaoTrabalhos": {
+      "titulo": "Construção de Trabalhos Acadêmicos",
+      "descricao": "Etapas para desenvolvimento de trabalhos acadêmicos gerais.",
       "categoria": "📘 Artigos Científicos e Produção Acadêmica",
-      "acesso": "publico"
+      "acesso": "publico",
+      "etapas": [
+        {
+          "etapa": "1. Escolha do tema",
+          "descricao": "Selecionar um tema relevante e viável para pesquisa.",
+          "link": "OQR3/metodologiageral.html#escolha-do-tema"
+        },
+        {
+          "etapa": "2. Levantamento bibliográfico",
+          "descricao": "Pesquisar artigos, livros e outras fontes para embasar o trabalho.",
+          "link": "OQR3/leituraeproducaodetextosacdemicos.html#levantamento-bibliografico"
+        },
+        {
+          "etapa": "3. Definição do problema e objetivos",
+          "descricao": "Delimitar a questão de pesquisa e o que se deseja alcançar.",
+          "link": "OQR3/introducao_a_pesquisa_cientifica.html#definicao-do-problema"
+        },
+        {
+          "etapa": "4. Metodologia",
+          "descricao": "Descrever os métodos e técnicas para coleta e análise dos dados.",
+          "link": "OQR3/metodologia_da_pesquisa.html"
+        },
+        {
+          "etapa": "5. Desenvolvimento e redação",
+          "descricao": "Escrever o texto conforme normas acadêmicas e estrutura recomendada.",
+          "link": "OQR3/redacao_cientifica.html"
+        },
+        {
+          "etapa": "6. Revisão e formatação",
+          "descricao": "Revisar conteúdo, corrigir erros e formatar segundo normas da instituição.",
+          "link": "OQR3/redacao_cientifica.html#formatacao"
+        },
+        {
+          "etapa": "7. Apresentação e entrega",
+          "descricao": "Preparar defesa ou submissão conforme exigências do curso ou evento.",
+          "link": "OQR3/comunicacao_cientifica.html"
+        }
+      ]
     },
-    "tecnicasDePesquisa": {
-      "titulo": "Técnicas de Pesquisa",
-      "descricao": "Instrumentos para coleta de dados: entrevistas, observação etc.",
-      "link": "./paginas/tecnicasdepesquisa.html",
+
+    "construcaoArtigos": {
+      "titulo": "Construção de Artigos Científicos",
+      "descricao": "Etapas específicas para a elaboração e publicação de artigos científicos.",
       "categoria": "📘 Artigos Científicos e Produção Acadêmica",
-      "acesso": "publico"
+      "acesso": "publico",
+      "etapas": [
+        {
+          "etapa": "1. Escolha e delimitação do tema",
+          "descricao": "Definir claramente o foco do artigo.",
+          "link": "OQR3/metodologiageral.html#escolha-do-tema"
+        },
+        {
+          "etapa": "2. Revisão sistemática da literatura",
+          "descricao": "Analisar criticamente trabalhos anteriores relacionados.",
+          "link": "OQR3/leituraeproducaodetextosacdemicos.html#revisao-da-literatura"
+        },
+        {
+          "etapa": "3. Elaboração do projeto e metodologia",
+          "descricao": "Planejar a pesquisa e definir métodos científicos rigorosos.",
+          "link": "OQR3/projeto_de_pesquisa.html"
+        },
+        {
+          "etapa": "4. Coleta e análise de dados",
+          "descricao": "Obter dados e utilizar técnicas adequadas para análise.",
+          "link": "OQR3/analise_de_dados.html"
+        },
+        {
+          "etapa": "5. Redação do artigo (introdução, métodos, resultados, discussão)",
+          "descricao": "Produzir o texto segundo normas específicas de artigos científicos.",
+          "link": "OQR3/redacao_cientifica.html"
+        },
+        {
+          "etapa": "6. Submissão e processo de revisão por pares",
+          "descricao": "Enviar para periódicos e responder aos pareceres dos revisores.",
+          "link": "OQR3/publicacao_cientifica.html"
+        },
+        {
+          "etapa": "7. Publicação e divulgação",
+          "descricao": "Publicar o artigo e divulgar os resultados para a comunidade científica.",
+          "link": "OQR3/comunicacao_cientifica.html"
+        }
+      ]
     },
-    "leituraProducaoTextosAcademicos": {
-      "titulo": "Leitura e Produção de Textos Acadêmicos",
-      "descricao": "Habilidades de leitura crítica e escrita acadêmica.",
-      "link": "./paginas/leituraeproducaodetextosacdemicos.html",
+
+    "construcaoTCC": {
+      "titulo": "Construção de Trabalho de Conclusão de Curso (TCC)",
+      "descricao": "Passos essenciais para desenvolvimento e apresentação do TCC.",
       "categoria": "📘 Artigos Científicos e Produção Acadêmica",
-      "acesso": "publico"
-    },
-    "redacaoCientifica": {
-      "titulo": "Redação Científica",
-      "descricao": "Normas e estilos de escrita para a comunicação eficaz de resultados de pesquisa.",
-      "link": "./paginas/redacao_cientifica.html",
-      "categoria": "📘 Artigos Científicos e Produção Acadêmica",
-      "acesso": "publico"
-    },
-    "comunicacaoCientifica": {
-      "titulo": "Comunicação Científica",
-      "descricao": "Estratégias de apresentação e divulgação de pesquisas.",
-      "link": "./paginas/comunicacao_cientifica.html",
-      "categoria": "📘 Artigos Científicos e Produção Acadêmica",
-      "acesso": "publico"
-    },
-    "eticaNaPesquisa": {
-      "titulo": "Ética na Pesquisa",
-      "descricao": "Princípios éticos e regulamentações na condução de pesquisa.",
-      "link": "./paginas/etica_na_pesquisa.html",
-      "categoria": "📘 Artigos Científicos e Produção Acadêmica",
-      "acesso": "publico"
-    },
-    "introducaoPesquisaCientifica": {
-      "titulo": "Introdução à Pesquisa Científica",
-      "descricao": "Fundamentos da pesquisa, tipos, etapas e elaboração de projetos.",
-      "link": "./paginas/introducao_a_pesquisa_cientifica.html",
-      "categoria": "📘 Artigos Científicos e Produção Acadêmica",
-      "acesso": "publico"
-    },
-    "tcc": {
-      "titulo": "Trabalho de Conclusão de Curso (TCC)",
-      "descricao": "Orientação e desenvolvimento de projeto de pesquisa individual.",
-      "link": "./paginas/tcc.html",
-      "categoria": "📘 Artigos Científicos e Produção Acadêmica",
-      "acesso": "publico"
-    },
-    "projetoDePesquisa": {
-      "titulo": "Projeto de Pesquisa",
-      "descricao": "Elaboração de plano detalhado para investigação científica.",
-      "link": "./paginas/projeto_de_pesquisa.html",
-      "categoria": "📘 Artigos Científicos e Produção Acadêmica",
-      "acesso": "publico"
-    },
-    "publicacaoCientifica": {
-      "titulo": "Publicação Científica e Revisão por Pares",
-      "descricao": "Processo de submissão, avaliação e publicação de artigos.",
-      "link": "./paginas/publicacao_cientifica.html",
-      "categoria": "📘 Artigos Científicos e Produção Acadêmica",
-      "acesso": "publico"
-    },
-    "estatisticaBasica": {
-      "titulo": "Estatística Básica",
-      "descricao": "Conceitos de estatística descritiva e inferencial.",
-      "link": "./paginas/estatistica_basica.html",
-      "categoria": "📊 Variáveis e Análise de Dados",
-      "acesso": "publico"
-    },
-    "bioestatistica": {
-      "titulo": "Bioestatística (em cursos da saúde)",
-      "descricao": "Aplicação de métodos estatísticos em pesquisas na área da saúde.",
-      "link": "./paginas/bioestatistica.html",
-      "categoria": "📊 Variáveis e Análise de Dados",
-      "acesso": "publico"
-    },
-    "estatisticaAplicada": {
-      "titulo": "Estatística Aplicada à Pesquisa",
-      "descricao": "Utilização de técnicas estatísticas para analisar dados de pesquisa.",
-      "link": "./paginas/estatistica_aplicada.html",
-      "categoria": "📊 Variáveis e Análise de Dados",
-      "acesso": "publico"
-    },
-    "metodosQuantitativos": {
-      "titulo": "Métodos Quantitativos",
-      "descricao": "Abordagens de pesquisa com dados numéricos e análise estatística.",
-      "link": "./paginas/metodos_quantitativos.html",
-      "categoria": "📊 Variáveis e Análise de Dados",
-      "acesso": "publico"
-    },
-    "metodosQualitativos": {
-      "titulo": "Métodos Qualitativos",
-      "descricao": "Abordagens de pesquisa com dados não numéricos.",
-      "link": "./paginas/metodos_qualitativos.html",
-      "categoria": "📊 Variáveis e Análise de Dados",
-      "acesso": "publico"
-    },
-    "psicometria": {
-      "titulo": "Psicometria (em psicologia e educação)",
-      "descricao": "Teoria e métodos de construção e aplicação de instrumentos de medida.",
-      "link": "./paginas/psicometria.html",
-      "categoria": "📊 Variáveis e Análise de Dados",
-      "acesso": "publico"
-    },
-    "econometria": {
-      "titulo": "Econometria (em economia e ciências sociais)",
-      "descricao": "Análise de dados econômicos com métodos estatísticos e matemáticos.",
-      "link": "./paginas/econometria.html",
-      "categoria": "📊 Variáveis e Análise de Dados",
-      "acesso": "publico"
-    },
-    "analiseDeDados": {
-      "titulo": "Análise de Dados",
-      "descricao": "Processo de organização, limpeza, transformação e interpretação de dados.",
-      "link": "./paginas/analise_de_dados.html",
-      "categoria": "📊 Variáveis e Análise de Dados",
-      "acesso": "publico"
-    },
-    "inferenciaEstatistica": {
-      "titulo": "Inferência Estatística",
-      "descricao": "Utilização de amostras para generalizações sobre populações.",
-      "link": "./paginas/inferencia_estatistica.html",
-      "categoria": "📊 Variáveis e Análise de Dados",
-      "acesso": "publico"
-    },
-    "planejamentoDeExperimentos": {
-      "titulo": "Planejamento de Experimentos",
-      "descricao": "Princípios e técnicas para planejamento de experimentos controlados.",
-      "link": "./paginas/planejamento_de_experimentos.html",
-      "categoria": "📊 Variáveis e Análise de Dados",
-      "acesso": "publico"
-    },
-    "designDePesquisa": {
-      "titulo": "Design de Pesquisa",
-      "descricao": "Estrutura geral de um estudo de pesquisa.",
-      "link": "./paginas/design_de_pesquisa.html",
-      "categoria": "📚 Outras Matérias Relacionadas",
-      "acesso": "publico"
-    },
-    "seminariosDePesquisa": {
-      "titulo": "Seminários de Pesquisa",
-      "descricao": "Discussão aprofundada de tópicos específicos de pesquisa.",
-      "link": "./paginas/seminarios_de_pesquisa.html",
-      "categoria": "📚 Outras Matérias Relacionadas",
-      "acesso": "publico"
-    },
-    "pesquisaOperacional": {
-      "titulo": "Pesquisa Operacional",
-      "descricao": "Aplicação de métodos analíticos para otimizar a tomada de decisões.",
-      "link": "./paginas/pesquisa_operacional.html",
-      "categoria": "📚 Outras Matérias Relacionadas",
-      "acesso": "publico"
-    },
-    "pesquisaEmCienciasSociais": {
-      "titulo": "Pesquisa em Ciências Sociais",
-      "descricao": "Métodos e técnicas para o estudo de fenômenos sociais.",
-      "link": "./paginas/pesquisa_em_ciencias_sociais.html",
-      "categoria": "📚 Outras Matérias Relacionadas",
-      "acesso": "publico"
-    },
-    "metodologiaDaPesquisaGeral": {
-      "titulo": "Metodologia da Pesquisa em Educação / Saúde / Administração etc.",
-      "descricao": "Aplicação da pesquisa científica em contextos específicos.",
-      "link": "./paginas/metodologia_da_pesquisa.html",
-      "categoria": "📚 Outras Matérias Relacionadas",
-      "acesso": "publico"
-    },
-    "logicaEArgumentacao": {
-      "titulo": "Lógica e Argumentação",
-      "descricao": "Princípios do raciocínio válido e construção de argumentos.",
-      "link": "./paginas/logica_e_argumentacao.html",
-      "categoria": "📚 Outras Matérias Relacionadas",
-      "acesso": "publico"
-    },
-    "tecnicasDeAmostragem": {
-      "titulo": "Técnicas de Amostragem",
-      "descricao": "Métodos para selecionar parte representativa de uma população.",
-      "link": "./paginas/tecnicas_de_amostragem.html",
-      "categoria": "📚 Outras Matérias Relacionadas",
-      "acesso": "publico"
-    },
-    "artigosGeradosAutomaticamente": {
-      "titulo": "Artigos Gerados Automaticamente",
-      "descricao": "Artigos Gerados Automaticamente para a saúde mental.",
-      "link": "./paginas/outroartigosoficialwzzm/artigosdesaudementalgerados.html",
-      "categoria": "📚 Outras Matérias Relacionadas",
-      "acesso": "publico"
+      "acesso": "publico",
+      "etapas": [
+        {
+          "etapa": "1. Escolha do tema e definição do problema",
+          "descricao": "Selecionar um tema alinhado com a área e viável para pesquisa.",
+          "link": "OQR3/tcc.html#escolha-do-tema"
+        },
+        {
+          "etapa": "2. Elaboração do projeto de pesquisa",
+          "descricao": "Planejar detalhadamente o estudo, incluindo objetivos e metodologia.",
+          "link": "OQR3/projeto_de_pesquisa.html"
+        },
+        {
+          "etapa": "3. Revisão bibliográfica",
+          "descricao": "Consultar fontes relevantes para fundamentar o estudo.",
+          "link": "OQR3/leituraeproducaodetextosacdemicos.html#revisao-bibliografica"
+        },
+        {
+          "etapa": "4. Coleta de dados e análise",
+          "descricao": "Executar a pesquisa conforme metodologia definida e analisar resultados.",
+          "link": "OQR3/analise_de_dados.html"
+        },
+        {
+          "etapa": "5. Redação do TCC",
+          "descricao": "Escrever capítulos conforme normas da instituição.",
+          "link": "OQR3/redacao_cientifica.html"
+        },
+        {
+          "etapa": "6. Revisão e ajustes",
+          "descricao": "Revisar texto, formatar e realizar ajustes conforme feedback do orientador.",
+          "link": "OQR3/tcc.html#revisao-e-ajustes"
+        },
+        {
+          "etapa": "7. Preparação para defesa",
+          "descricao": "Organizar apresentação oral e documentos para defesa final.",
+          "link": "OQR3/comunicacao_cientifica.html#defesa"
+        }
+      ]
     }
   }
 }
