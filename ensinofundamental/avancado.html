@@ -1,94 +1,131 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>WZZM WIKI ZONE ZERO MOD - Artigos e Matérias</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
+    <title>Lista de Artigos</title>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <style>
+        body { font-family: sans-serif; margin: 20px; line-height: 1.6; color: #333; }
+        h1 { color: #0056b3; }
+
+        /* Estilo para a listagem de artigos */
+        .article-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .article-item h2 { /* Mudado para h2 para os títulos dos artigos */
+            margin-top: 0;
+            color: #007bff;
+        }
+        .article-item p {
+            margin-bottom: 5px;
+        }
+        .article-item small {
+            color: #666;
+        }
+        /* Estilo para mensagens de status (opcional) */
+        #articles-status { margin-top: 15px; padding: 12px; border-radius: 4px; font-size: 0.9rem; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+    </style>
 </head>
-<body class="bg-gray-100 min-h-screen py-8">
-  <div class="max-w-6xl mx-auto px-4">
-    <h1 class="text-2xl font-semibold text-center text-gray-800 mb-8">Matérias de Graduação: Pesquisa e Análise de Dados</h1>
+<body>
 
-    <div id="content-sections">
-      <p>Carregando conteúdo...</p>
-    </div>
+    <h1>Artigos Publicados</h1>
 
-  </div>
+    <div id="articles-list-section">
+        <div id="articles-container">
+            <p>Carregando artigos...</p>
+        </div>
+        <div id="articles-status"></div> </div>
 
-  <script>
-    const JSON_URL = './artigos.json'; // OU 'https://admin.wzzm.org/json/artigos.json'
+    <script>
+        // Sua configuração do Firebase. Use as informações do seu projeto.
+        const firebaseConfig = {
+            apiKey: "AIzaSyB9GkSqTIZ0kbVsba_WOdQeVAETrF9qna0",
+            authDomain: "wzzm-ce3fc.firebaseapp.com",
+            projectId: "wzzm-ce3fc",
+            storageBucket: "wzzm-ce3fc.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID", // <--- Não esqueça de substituir este!
+            appId: "1:249427877153:web:0e4297294794a5aadeb260"
+        };
 
-    async function loadContent() {
-      const contentSectionsDiv = document.getElementById('content-sections');
-      contentSectionsDiv.innerHTML = '<p>Carregando conteúdo...</p>';
+        // Inicialize o Firebase
+        firebase.initializeApp(firebaseConfig);
 
-      // Se não há controle de acesso, userRole e filtragem são simplificados ou removidos.
-      const userRole = 'publico'; // Assumimos que tudo é público ou não há usuários logados
+        // Obtenha a instância do Firestore
+        const db = firebase.firestore();
 
-      try {
-        const response = await fetch(JSON_URL);
-        if (!response.ok) {
-          throw new Error(`Erro HTTP! status: ${response.status} - Verifique a URL e as permissões de CORS.`);
-        }
-        const data = await response.json();
+        // Referências aos elementos de listagem de artigo
+        const articlesContainerDiv = document.getElementById('articles-container');
+        const articlesStatusDiv = document.getElementById('articles-status');
 
-        const materias = Object.values(data.materias);
-
-        // Se todo o conteúdo é público, esta filtragem é redundante, mas não faz mal.
-        // Se você tiver certeza que NUNCA terá 'acesso: "admin"' no JSON, pode remover o .filter()
-        const filteredMaterias = materias.filter(materia => {
-            return !(materia.acesso === 'admin' && userRole !== 'admin');
-        });
-
-        const categorias = {};
-        filteredMaterias.forEach(materia => {
-          if (!categorias[materia.categoria]) {
-            categorias[materia.categoria] = [];
-          }
-          categorias[materia.categoria].push(materia);
-        });
-
-        contentSectionsDiv.innerHTML = '';
-
-        for (const categoria in categorias) {
-          const section = document.createElement('section');
-          section.className = 'mb-10';
-          section.innerHTML = `
-            <h2 class="text-xl font-semibold text-gray-700 mb-4 border-b pb-2">${categoria}</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="${categoria.replace(/\s+/g, '-').toLowerCase()}-container">
-            </div>
-          `;
-          contentSectionsDiv.appendChild(section);
-
-          const container = section.querySelector(`#${categoria.replace(/\s+/g, '-').toLowerCase()}-container`);
-
-          categorias[categoria].forEach(materia => {
-            const div = document.createElement('div');
-            div.className = 'bg-white rounded-lg shadow p-4';
-            div.innerHTML = `
-              <h3 class="font-semibold text-gray-800">${materia.titulo}</h3>
-              <p class="text-sm text-gray-600 mt-1">${materia.descricao}</p>
-              <a href="${materia.link}" class="text-blue-600 text-sm font-semibold hover:underline mt-2 inline-block">Ver mais</a>
-            `;
-            container.appendChild(div);
-          });
+        // Função para exibir mensagens de status na listagem de artigos
+        function showArticlesStatus(message, type) {
+            if (articlesStatusDiv) {
+                articlesStatusDiv.textContent = message;
+                articlesStatusDiv.className = 'status ' + type;
+            }
         }
 
-      } catch (error) {
-        console.error("Erro ao carregar conteúdo:", error);
-        contentSectionsDiv.innerHTML = `<p class="text-red-500">Erro ao carregar o conteúdo: ${error.message}.</p>`;
-      }
-    }
+        // Função para carregar e exibir os artigos
+        function loadArticles() {
+            if (!articlesContainerDiv) {
+                console.error("Erro: Elemento 'articles-container' não encontrado no HTML.");
+                return;
+            }
 
-    // Chama a função para carregar o conteúdo uma vez quando a página carregar.
-    window.addEventListener('load', loadContent);
-  </script>
+            articlesContainerDiv.innerHTML = '<p>Carregando artigos...</p>';
+            showArticlesStatus('', '');
+
+            db.collection('articles')
+              .orderBy('createdAt', 'desc') // Ordena do mais recente para o mais antigo (requer campo 'createdAt')
+              .onSnapshot(
+                    (querySnapshot) => {
+                        articlesContainerDiv.innerHTML = ''; // Limpa o conteúdo existente
+
+                        if (querySnapshot.empty) {
+                            articlesContainerDiv.innerHTML = '<p>Nenhum artigo encontrado.</p>';
+                            showArticlesStatus('Nenhum artigo para exibir.', 'warning');
+                            return;
+                        }
+
+                        querySnapshot.forEach((doc) => {
+                            const article = doc.data();
+                            // Não precisamos do articleId para esta página de visualização simples
+
+                            const articleElement = document.createElement('div');
+                            articleElement.classList.add('article-item'); // Adiciona a classe CSS
+
+                            articleElement.innerHTML = `
+                                <h2>${article.title}</h2>
+                                <p><strong>Acesso:</strong> ${article.acesso}</p>
+                                <p>${article.content}</p> <p><small>Criado por: ${article.userId || 'Desconhecido'}</small></p>
+                                <p><small>Em: ${article.createdAt ? new Date(article.createdAt.seconds * 1000).toLocaleString() : 'N/A'}</small></p>
+                            `;
+                            articlesContainerDiv.appendChild(articleElement);
+                        });
+                        showArticlesStatus('Artigos carregados com sucesso!', 'success');
+                    },
+                    (error) => {
+                        console.error("Erro ao carregar artigos:", error);
+                        if (error.code === 'permission-denied') {
+                            showArticlesStatus('Erro: Permissão negada para ler artigos. Verifique as regras de segurança do Firestore.', 'error');
+                        } else {
+                            showArticlesStatus(`Erro ao carregar artigos: ${error.message}`, 'error');
+                        }
+                    }
+                );
+        }
+
+        // Chame a função para carregar os artigos assim que a página for carregada
+        document.addEventListener('DOMContentLoaded', loadArticles);
+
+    </script>
+
 </body>
 </html>
