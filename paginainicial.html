@@ -1,3 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WZZM Escolar</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <style>
+        body {
+            margin: 0;
+            background-color: #f5f5f5; /* Cor de fundo suave */
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px; /* Limita a largura do conteúdo */
+            margin: auto; /* Centraliza o conteúdo */
+        }
+        .mdl-layout__content {
+            padding: 20px; /* Adiciona padding ao conteúdo principal do MDL */
+        }
+        h1, h2, h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        p {
+            color: #555;
+            line-height: 1.6;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        /* Estilos para os botões MDL */
+        .mdl-button.mdl-button--raised {
+            height: auto; /* Permite que o botão se ajuste ao conteúdo */
+            padding: 15px 10px; /* Ajusta o padding para um visual maior */
+            white-space: normal; /* Permite que o texto quebre linha */
+            line-height: 1.4; /* Espaçamento da linha do texto */
+            text-align: center;
+            font-size: 1rem; /* Tamanho da fonte */
+        }
+
+        #iframeContent {
+            width: 100%;
+            height: calc(100vh - 350px); /* Ajusta a altura para caber o banner e o rodapé */
+            border: none;
+            margin-top: 30px;
+            background-color: #f0f0f0; /* Cor de fundo para o iframe */
+        }
+
+        /* Estilos para o rodapé */
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            color: #777;
+            background-color: #f0f0f0;
+            border-top: 1px solid #eee;
+        }
+        footer a {
+            color: #3f51b5; /* Cor do link do MDL */
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilo para o banner (adaptado do seu outro código) */
+        .banner-container {
+            clear: both;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .banner-container img {
+            max-width: 100%;
+            height: auto;
+            border: 0;
+            display: block;
+            margin: 0 auto; /* Centraliza a imagem */
+        }
+        .mdl-layout__header-row #user-info {
+            color: white; /* Garante que o texto seja visível no cabeçalho */
+            margin-right: 16px;
+        }
+        .mdl-layout__drawer .mdl-navigation__link {
+            color: #424242; /* Cor padrão dos links do drawer */
+        }
+    </style>
+</head>
+<body>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">WZZM Escolar</span>
+                <div class="mdl-layout-spacer"></div>
+                <div id="user-info" class="mdl-typography--body-1-force-preferred-font-color-contrast"></div>
+                <button id="login-google" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="display: none;">
+                    <i class="material-icons">account_circle</i> Login com Google
+                </button>
+                <button id="logout-button" class="mdl-button mdl-js-button mdl-button--accent" style="display: none;">
+                    <i class="material-icons">exit_to_app</i> Sair
+                </button>
+            </div>
+        </header>
+
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Menu Principal</span>
+            <nav class="mdl-navigation" id="main-navigation">
+                <a class="mdl-navigation__link" href="#" onclick="loadPage('paginainicial.html')">Página Inicial</a>
+                <a class="mdl-navigation__link" href="#" onclick="loadPage('sobre.html')">Sobre</a>
+                <a class="mdl-navigation__link" href="#" onclick="loadPage('contato.html')">Contato</a>
+                </nav>
+        </div>
+
         <main class="mdl-layout__content">
             <div class="container">
                 <div class="banner-container">
@@ -41,6 +167,124 @@
                     </div>
                 </div>
 
-                <iframe id="iframeContent" src="./paginainicial.html" frameborder="0"></iframe>
-            </div>
+                </div>
         </main>
+
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">WZZM Escolar © 2025</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="./Privacidade/">Privacidade</a></li>
+                    <li><a href="./Termos/">Termos</a></li>
+                </ul>
+            </div>
+            <div class="mdl-mini-footer__right-section">
+                <p>Feito com auxílio do site: <a href="https://html-online.com/">html-online.com</a></p>
+                <p>Editor: Collei "Grigori" Ludwig</p>
+                <p style="text-align: center;">Site administrador pela <a href="http://wzzm.org">Wiki Zone Zero Mod</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script>
+        // --- Configuração do Firebase ---
+        // ATENÇÃO: Esta é a mesma chave do seu código anterior. Em produção, considere variáveis de ambiente ou outras formas de segurança.
+        const firebaseConfig = {
+            apiKey: "AIzaSyB9GkSqTIZ0kbVsba_WOdQeVAETrF9qna0",
+            authDomain: "wzzm-ce3fc.firebaseapp.com",
+            projectId: "wzzm-ce3fc",
+            storageBucket: "wzzm-ce3fc.appspot.com",
+            messagingSenderId: "249427877153",
+            appId: "1:249427877153:web:0e4297294794a5aadeb260",
+            measurementId: "G-PLKNZNFCQ8"
+        };
+
+        // Inicialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Elementos da UI
+        const loginGoogleButton = document.getElementById('login-google');
+        const logoutButton = document.getElementById('logout-button');
+        const userInfo = document.getElementById('user-info');
+        // const iframeContent = document.getElementById('iframeContent'); // Removido, pois o iframe não está mais no HTML
+        const navLinks = document.querySelectorAll('.mdl-navigation__link');
+        const contentButtons = document.querySelectorAll('.grid button'); // Seleciona todos os botões de conteúdo
+
+        // Função para carregar a página no iframe (agora não mais em um iframe)
+        function loadPage(url) {
+            // Como o iframe foi removido, esta função precisaria ser adaptada para carregar o conteúdo de outra forma,
+            // por exemplo, usando fetch para carregar HTML e injetá-lo em uma div.
+            console.warn("A função loadPage(url) foi chamada, mas o iframeContent foi removido. Adapte esta função para carregar o conteúdo de outra forma.");
+            // Exemplo de como você poderia carregar e injetar o conteúdo em uma div:
+            // fetch(url)
+            //     .then(response => response.text())
+            //     .then(html => {
+            //         document.getElementById('content-area-where-iframe-was').innerHTML = html;
+            //     })
+            //     .catch(error => console.error('Erro ao carregar a página:', error));
+        }
+
+        // Função para carregar conteúdo (mesma função do seu código original, mas agora sem iframe)
+        function loadContent(url) {
+            console.warn("A função loadContent(url) foi chamada, mas o iframeContent foi removido. Adapte esta função para carregar o conteúdo de outra forma.");
+            // Exemplo de como você poderia carregar e injetar o conteúdo em uma div:
+            // fetch(url)
+            //     .then(response => response.text())
+            //     .then(html => {
+            //         document.getElementById('content-area-where-iframe-was').innerHTML = html;
+            //     })
+            //     .catch(error => console.error('Erro ao carregar o conteúdo:', error));
+        }
+
+        // Listener de estado de autenticação (Firebase)
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                // Usuário logado
+                userInfo.textContent = `Olá, ${user.displayName || user.email}!`;
+                loginGoogleButton.style.display = 'none';
+                logoutButton.style.display = 'inline-block'; // Mostra o botão de logout
+            } else {
+                // Usuário não logado
+                userInfo.textContent = '';
+                loginGoogleButton.style.display = 'inline-block';
+                logoutButton.style.display = 'none'; // Esconde o botão de logout
+            }
+        });
+
+        // Login Google (que serve para o YouTube)
+        loginGoogleButton.addEventListener('click', async () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            // Adiciona o escopo para informações básicas do YouTube (opcional, para acessar dados da conta)
+            // provider.addScope('https://www.googleapis.com/auth/youtube.readonly'); 
+            try {
+                await auth.signInWithPopup(provider);
+            } catch (error) {
+                console.error("Erro ao fazer login com Google (YouTube):", error);
+                alert(`Erro ao fazer login com Google (YouTube): ${error.message}`);
+            }
+        });
+
+        // Logout
+        logoutButton.addEventListener('click', () => {
+            auth.signOut().then(() => {
+                console.log("Usuário deslogado.");
+            }).catch((error) => {
+                console.error("Erro ao fazer logout:", error);
+                alert(`Erro ao fazer logout: ${error.message}`);
+            });
+        });
+
+        // Inicialização do estado ao carregar a página e upgrade do MDL
+        document.addEventListener('DOMContentLoaded', () => {
+            // Garante que o MDL inicialize os componentes dinamicamente adicionados ou modificados
+            if (componentHandler) {
+                componentHandler.upgradeDom();
+            }
+            // Carrega a página inicial no iframe por padrão
+            // loadPage('paginainicial.html'); // Esta linha precisaria ser adaptada ou removida, pois o iframe não existe
+        });
+    </script>
+</body>
+</html>
